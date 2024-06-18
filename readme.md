@@ -12,6 +12,6 @@
    - The provided DLL file is compatible with Windows 10. For Windows 11, locate and download the corresponding DLL version from its GitHub page.
 
 4. **Keyboard shortcuts**:
-   - Utilize **Alt + Ctrl + Arrow keys** to navigate seamlessly within the 3x3 virtual desktop grid set by the script.
+   - Utilize **Alt + Win + Ctrl + Arrow keys** to navigate seamlessly within the 3x3 virtual desktop grid set by the script.
 
 For an enhanced experience managing virtual desktops on Windows, consider using **Windows Virtual Desktop Helper**.
