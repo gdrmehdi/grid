@@ -1,6 +1,6 @@
 ### Setup Instructions for AutoHotkey Script to Manage Virtual Desktops in a 3x3 Grid
 
-0.**Create 9 virtual desktop**
+**Create 9 virtual desktop**
 
 1. **Download AutoHotkey version 1.x**:
    - Visit the [AutoHotkey download page](https://www.autohotkey.com/download/1.1/) and select version 1.x for download.
