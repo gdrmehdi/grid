@@ -27,7 +27,11 @@ ctrl+win+alt+arrow (up-down-right-left)
 ویدیو دمو
 
 
-![[Demo.mkv]]
+https://github.com/gdrmehdi/grid/assets/42337477/91be9b98-a115-441f-b841-913c351d68ec
+
+
+
+
 
 The AutoHotkey script allows you to move between Windows virtual desktops in a two-dimensional manner. Windows doesn't have this feature and only allows you to switch between desktops linearly.
 
@@ -54,5 +58,4 @@ To switch, just use the keys: ctrl + win + alt + arrow (up-down-right-left)
 # Does it have any bugs?
 
 _It has an issue where the desktop doesn’t activate after switching, which I have tried to partially fix with a click..._ Demo video:
-
-![[Demo.mkv]]
+https://github.com/gdrmehdi/grid/assets/42337477/91be9b98-a115-441f-b841-913c351d68ec
