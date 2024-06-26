@@ -1,3 +1,5 @@
+#Include lib\AHK-Virtual-Desktop-Library\Main.ahk
+
 VDA_PATH := "VirtualDesktopAccessor.dll"
 hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", VDA_PATH, "Ptr")
 ; Load VirtualDesktopAccessor.dllGetDesktopCountProc := DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccessor, "AStr", "GetDesktopCount", "Ptr")
@@ -11,14 +13,17 @@ GetCurrentDesktopNumber:=DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccesso
 ^!#Right::MoveDesktop("Right")
 ^!#Up::MoveDesktop("Up")
 ^!#Down::MoveDesktop("Down")
+ F1::MouseClick, Middle
 
 GoToDesktopNumber(num) {
     global GoToDesktopNumberProc
     DllCall(GoToDesktopNumberProc, "Int", num, "Int")
+   
     return
+
 }
 
-MoveCurrentWindowToDesktop(desktopNumber) {
+fMoveCurrentWindowToDesktop(desktopNumber) {
     global MoveWindowToDesktopNumberProc, GoToDesktopNumberProc
     WinGet, activeHwnd, ID, A
     DllCall(MoveWindowToDesktopNumberProc, "Ptr", activeHwnd, "Int", desktopNumber, "Int")
@@ -26,14 +31,21 @@ MoveCurrentWindowToDesktop(desktopNumber) {
 }
 
 
-MoveOrGotoDesktopNumber(num) {
-    ; If user is holding down Mouse left button, move the current window also
-    if (GetKeyState("LButton")) {
-        MoveCurrentWindowToDesktop(num)
-    } else {
-        GoToDesktopNumber(num)
-    }
-    return
+MoveOrGotoDesktopNumber(num){
+	WindowsBugFix()
+	DllCall(GoToDesktopNumberProc, Int, num )
+	; the following 3 lines are because Windows still have bugs:
+	; sometimes when going to one desktop to another the focus still
+	; in the previous window of the previous desktop(dont ask me why...
+	; cos windows)
+	; SO I have to get the alt tab list of windows and focus the topmost
+	; window EVERY time you go to another desktop
+	; also, because the following lines auto alt tab when going to an empty
+	; desktop  AltTabOnSwitch() its redundant and deprecated!, I didnt deleted it
+	; because im lazy(at least I document everything)
+	altTabList := GetAltTabList()
+	lastWindow := altTabList[1]
+	WinActivate, ahk_id %lastWindow%
 }
 
 
